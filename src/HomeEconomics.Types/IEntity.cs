@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace HomeEconomics.Types
 {
-    public class Class1
+    public interface IEntity
     {
+        string Id { get; set; }
+        string Name { get; set; }
     }
 }
