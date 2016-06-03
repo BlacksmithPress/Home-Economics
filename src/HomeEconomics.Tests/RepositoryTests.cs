@@ -52,7 +52,7 @@ namespace HomeEconomics.Tests
             var actual = repository.Create(expected);
 
             // assert
-            actual.Id.ShouldNotBeNullOrEmpty();
+            actual.Id.ShouldNotBeNull();
 
             // cleanup
 

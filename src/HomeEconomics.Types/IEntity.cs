@@ -8,7 +8,7 @@ namespace HomeEconomics.Types
 {
     public interface IEntity
     {
-        string Id { get; set; }
+        Guid Id { get; set; }
         string Name { get; set; }
     }
 }

@@ -19,9 +19,11 @@ namespace HomeEconomics.Data.Repositories
 
         public EntityType Create(EntityType entity)
         {
+            if (entity.Id == Guid.Empty)
+                entity.Id = Guid.NewGuid();
+
             _collection.InsertOne(entity);
-            var filter = Builders<EntityType>.Filter.Eq("Name", entity.Name);
-            return _collection.Find(filter).FirstOrDefault();
+            return entity;
         }
 
         public EntityType Retrieve(string id)
@@ -32,8 +34,8 @@ namespace HomeEconomics.Data.Repositories
 
         public EntityType Update(EntityType entity)
         {
-            if (!string.IsNullOrEmpty(entity.Id))
-                Delete(entity.Id);
+            if (entity.Id != Guid.Empty)
+                Delete(entity.Id.ToString());
 
             return Create(entity);
         }
