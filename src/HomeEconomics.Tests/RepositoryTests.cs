@@ -23,13 +23,8 @@ namespace HomeEconomics.Tests
         public RepositoryTests()
         {
             var mongo = new MongoClient(ConfigurationManager.ConnectionStrings["home-economics"].ConnectionString);
-            var people = mongo.GetDatabase("home-economics").GetCollection<IPerson>("People");
-
             var builder = new ContainerBuilder();
-            builder.RegisterType<Person>().As<IPerson>();
-            builder.RegisterType<Repository<IPerson>>().As<IRepository<IPerson>>();
-            builder.RegisterInstance(people).As<IMongoCollection<IPerson>>();
-
+            builder.RegisterModule<Data.Module>();
             _container = builder.Build();
         }
 
