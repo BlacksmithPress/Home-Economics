@@ -32,6 +32,7 @@ namespace HomeEconomics.Tests
         public void GenericRepository_CreatePersonWithNoId_GeneratesId()
         {
             // arrange isolation
+            Database.Instance.Clear();
 
             // arrange test
             var expected = new Person
@@ -41,10 +42,9 @@ namespace HomeEconomics.Tests
                 Birthdate = DateTimeOffset.Parse("1966-10-03T00:00:00-05:00"),
                 Sex = Sex.Male,
             };
-            var repository = _container.Resolve<IRepository<IPerson>>();
 
             // act
-            var actual = repository.Create(expected);
+            var actual = Database.Instance.People.Create(expected);
 
             // assert
             actual.Id.ShouldNotBeNull();

@@ -10,7 +10,9 @@ namespace HomeEconomics.Types
     {
         EntityType Create(EntityType entity);
         EntityType Retrieve(string id);
+        IEnumerable<EntityType> RetrieveAll();
         EntityType Update(EntityType entity);
         void Delete(string id);
+        void Clear();
     }
 }

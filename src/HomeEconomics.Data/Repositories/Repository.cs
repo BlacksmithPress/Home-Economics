@@ -32,6 +32,11 @@ namespace HomeEconomics.Data.Repositories
             return _collection.Find(filter).FirstOrDefault();
         }
 
+        public IEnumerable<EntityType> RetrieveAll()
+        {
+            return _collection.AsQueryable();
+        }
+
         public EntityType Update(EntityType entity)
         {
             if (entity.Id != Guid.Empty)
@@ -44,6 +49,11 @@ namespace HomeEconomics.Data.Repositories
         {
             var filter = Builders<EntityType>.Filter.Eq("Id", id);
             _collection.DeleteOne(filter);
+        }
+
+        public void Clear()
+        {
+            _collection.Database.DropCollection(_collection.CollectionNamespace.CollectionName);
         }
     }
 }

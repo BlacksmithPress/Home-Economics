@@ -30,8 +30,14 @@ namespace HomeEconomics.Data.Repositories
 
         public static Database Instance { get; internal set; }
 
-        public IRepository<IFamily> Families { get; set; }
+        public Families Families { get; set; }
         public People People { get; set; }
+
+        public void Clear()
+        {
+            Families?.Clear();
+            People?.Clear();
+        }
     }
 
 }
