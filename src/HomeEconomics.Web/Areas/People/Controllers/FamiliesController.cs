@@ -6,8 +6,8 @@ using HomeEconomics.Data.Entities.People;
 
 namespace HomeEconomics.Web.Areas.People.Controllers
 {
-    public class PeopleController : EntityController<Data.Repositories.People, Person>
+    public class FamiliesController : EntityController<Data.Repositories.Families, Family>
     {
-        public PeopleController() : base(Database.Instance.People) { }
+        public FamiliesController() : base(Database.Instance.Families) { }
     }
 }

@@ -234,6 +234,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\People\Controllers\EntityController.cs" />
+    <Compile Include="Areas\People\Controllers\FamiliesController.cs" />
     <Compile Include="Areas\People\Controllers\PeopleController.cs" />
     <Compile Include="Areas\People\PeopleAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -290,6 +292,11 @@
     <Content Include="Areas\People\Views\People\Details.cshtml" />
     <Content Include="Areas\People\Views\People\Edit.cshtml" />
     <Content Include="Areas\People\Views\People\Index.cshtml" />
+    <Content Include="Areas\People\Views\Families\Create.cshtml" />
+    <Content Include="Areas\People\Views\Families\Delete.cshtml" />
+    <Content Include="Areas\People\Views\Families\Details.cshtml" />
+    <Content Include="Areas\People\Views\Families\Edit.cshtml" />
+    <Content Include="Areas\People\Views\Families\Index.cshtml" />
     <None Include="Properties\PublishProfiles\home-economics - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\home-economics - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
