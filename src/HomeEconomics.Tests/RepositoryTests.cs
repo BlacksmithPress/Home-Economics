@@ -53,5 +53,22 @@ namespace HomeEconomics.Tests
 
         }
 
+        [Test]
+        public void Repository_LoadJson_PopulatesCollection()
+        {
+            // arrange isolation
+
+            // arrange test
+
+            // act
+            
+
+            // assert
+
+            // cleanup
+
+        }
+
+
     }
 }
