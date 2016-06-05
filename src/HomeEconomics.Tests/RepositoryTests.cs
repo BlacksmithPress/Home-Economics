@@ -31,7 +31,7 @@ namespace HomeEconomics.Tests
         }
 
         [Test]
-        public void GenericRepository_CreatePersonWithNoId_GeneratesId()
+        public void People_CreatePersonWithNoId_GeneratesId()
         {
             // arrange isolation
             Database.Instance.Clear();
@@ -50,6 +50,25 @@ namespace HomeEconomics.Tests
 
             // assert
             actual.Id.ShouldNotBeNull();
+
+            // cleanup
+
+        }
+
+        [Test]
+        public void People_Retrieve_DeserializesWithoutException()
+        {
+            // arrange isolation
+
+            // arrange test
+            var expected = Samples.People.Person.Ken;
+            Database.Instance.People.Create(expected);
+
+            // act
+            var actual = Database.Instance.People.Retrieve(expected.Id);
+
+            // assert
+            actual.ShouldNotBeNull();
 
             // cleanup
 

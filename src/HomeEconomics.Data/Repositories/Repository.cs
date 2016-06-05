@@ -3,19 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Autofac;
 using HomeEconomics.Types;
+using Inflector;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
 namespace HomeEconomics.Data.Repositories
 {
-    public class Repository<EntityType> :IRepository<EntityType> where EntityType : IEntity
+    public class Repository<InterfaceType, EntityType> : IRepository<EntityType> 
+        where EntityType : InterfaceType
+        where InterfaceType : IEntity
     {
         private IMongoCollection<EntityType> _collection;
 
-        public Repository(IMongoCollection<EntityType> collection)
+        public Repository(IMongoDatabase database, ContainerBuilder builder, string name = null)
         {
-            _collection = collection;
+            if (string.IsNullOrEmpty(name))
+                name = DetermineCollectionName(typeof(EntityType));
+
+            _collection = database.GetCollection<EntityType>(name);
+            builder.RegisterType<EntityType>().As<InterfaceType>();
+            builder.RegisterInstance(_collection).As<IMongoCollection<EntityType>>();
         }
+
+        private static string DetermineCollectionName(Type type)
+        {
+            return type.Name.Pluralize();
+        }
+
+        public IQueryable<EntityType> Documents { get { return _collection.AsQueryable(); } }
 
         public EntityType Create(EntityType entity)
         {
@@ -30,11 +47,6 @@ namespace HomeEconomics.Data.Repositories
         {
             var filter = Builders<EntityType>.Filter.Eq("Id", id);
             return _collection.Find(filter).FirstOrDefault();
-        }
-
-        public IEnumerable<EntityType> RetrieveAll()
-        {
-            return _collection.AsQueryable();
         }
 
         public EntityType Update(EntityType entity)

@@ -12,21 +12,13 @@ using MongoDB.Driver;
 
 namespace HomeEconomics.Data.Repositories
 {
-    public class Rewards : Repository<IReward>
+    public class Rewards : Repository<IReward, Reward>
     {
-        private Rewards(IMongoCollection<IReward> collection) : base(collection) { }
+        private Rewards(IMongoDatabase database, ContainerBuilder builder) : base(database, builder) { }
 
-        public static Rewards CreateRepository(IMongoDatabase database, string name)
+        public static Rewards CreateRepository(IMongoDatabase database, ContainerBuilder builder)
         {
-            return new Rewards(database.GetCollection<IReward>(name));
-        }
-
-        public static void RegisterTypes(IMongoDatabase database, ContainerBuilder builder)
-        {
-            var collection = database.GetCollection<IReward>("Rewards");
-            builder.RegisterType<Reward>().As<IReward>();
-            builder.RegisterType<Repository<IReward>>().As<IRepository<IReward>>();
-            builder.RegisterInstance(collection).As<IMongoCollection<IReward>>();
+            return new Rewards(database, builder);
         }
     }
 }

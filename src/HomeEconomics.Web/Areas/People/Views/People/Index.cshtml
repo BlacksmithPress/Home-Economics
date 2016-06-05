@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HomeEconomics.Types.People.IPerson>
+﻿@model IEnumerable<HomeEconomics.Data.Entities.People.Person>
 
 @{
     ViewBag.Title = "Index";
@@ -12,13 +12,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Sex)
+            Name
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Birthdate)
+            Birthdate
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Sex
         </th>
         <th></th>
     </tr>
@@ -26,13 +26,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Sex)
+            @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Birthdate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Name)
+            @Html.DisplayFor(modelItem => item.Sex)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

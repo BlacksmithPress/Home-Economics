@@ -12,21 +12,13 @@ using MongoDB.Driver;
 
 namespace HomeEconomics.Data.Repositories
 {
-    public class Assignments : Repository<IAssignment>
+    public class Assignments : Repository<IAssignment, Assignment>
     {
-        private Assignments(IMongoCollection<IAssignment> collection) : base(collection) { }
+        private Assignments(IMongoDatabase database, ContainerBuilder builder) : base(database, builder) { }
 
-        public static Assignments CreateRepository(IMongoDatabase database, string name)
+        public static Assignments CreateRepository(IMongoDatabase database, ContainerBuilder builder)
         {
-            return new Assignments(database.GetCollection<IAssignment>(name));
-        }
-
-        public static void RegisterTypes(IMongoDatabase database, ContainerBuilder builder)
-        {
-            var collection = database.GetCollection<IAssignment>("Assignments");
-            builder.RegisterType<Assignment>().As<IAssignment>();
-            builder.RegisterType<Repository<IAssignment>>().As<IRepository<IAssignment>>();
-            builder.RegisterInstance(collection).As<IMongoCollection<IAssignment>>();
+            return new Assignments(database, builder);
         }
     }
 }

@@ -8,9 +8,9 @@ namespace HomeEconomics.Types
 {
     public interface IRepository<EntityType> where EntityType : IEntity
     {
+        IQueryable<EntityType> Documents { get; }
         EntityType Create(EntityType entity);
         EntityType Retrieve(Guid id);
-        IEnumerable<EntityType> RetrieveAll();
         EntityType Update(EntityType entity);
         void Delete(Guid id);
         void Clear();

@@ -8,19 +8,12 @@ namespace HomeEconomics.Data
     {
         internal Database(IMongoDatabase database, ContainerBuilder builder)
         {
-            People.RegisterTypes(database, builder);
-            Families.RegisterTypes(database, builder);
-            Activities.RegisterTypes(database, builder);
-            Assignments.RegisterTypes(database, builder);
-            Evaluations.RegisterTypes(database, builder);
-            Rewards.RegisterTypes(database, builder);
-
-            People = People.CreateRepository(database, "People");
-            Families = Families.CreateRepository(database, "Families");
-            Activities = Activities.CreateRepository(database, "Activities");
-            Assignments = Assignments.CreateRepository(database, "Assignments");
-            Evaluations = Evaluations.CreateRepository(database, "Evaluations");
-            Rewards = Rewards.CreateRepository(database, "Rewards");
+            People = People.CreateRepository(database, builder);
+            Families = Families.CreateRepository(database, builder);
+            Activities = Activities.CreateRepository(database, builder);
+            Assignments = Assignments.CreateRepository(database, builder);
+            Evaluations = Evaluations.CreateRepository(database, builder);
+            Rewards = Rewards.CreateRepository(database, builder);
         }
 
         public static Database Instance { get; internal set; }

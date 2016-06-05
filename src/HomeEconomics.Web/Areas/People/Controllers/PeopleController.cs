@@ -13,7 +13,7 @@ namespace HomeEconomics.Web.Areas.People.Controllers
         // GET: People/People
         public ActionResult Index()
         {
-            return View(_people.RetrieveAll());
+            return View(_people.Documents);
         }
 
         // GET: People/People/Details/5

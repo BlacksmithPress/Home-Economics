@@ -7,21 +7,13 @@ using MongoDB.Driver;
 
 namespace HomeEconomics.Data.Repositories
 {
-    public class Families : Repository<IFamily>
+    public class Families : Repository<IFamily, Family>
     {
-        private Families(IMongoCollection<IFamily> collection) : base(collection) { }
+        private Families(IMongoDatabase database, ContainerBuilder builder) : base(database, builder) { }
 
-        public static Families CreateRepository(IMongoDatabase database, string name)
+        public static Families CreateRepository(IMongoDatabase database, ContainerBuilder builder)
         {
-            return new Families(database.GetCollection<IFamily>(name));
-        }
-
-        public static void RegisterTypes(IMongoDatabase database, ContainerBuilder builder)
-        {
-            var families = database.GetCollection<IFamily>("Families");
-            builder.RegisterType<Family>().As<IFamily>();
-            builder.RegisterType<Repository<IFamily>>().As<IRepository<IFamily>>();
-            builder.RegisterInstance(families).As<IMongoCollection<IFamily>>();
+            return new Families(database, builder);
         }
     }
 }
