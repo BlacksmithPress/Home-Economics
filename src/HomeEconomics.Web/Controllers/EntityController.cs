@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Net;
 using System.Web.Mvc;
-using HomeEconomics.Data;
-using HomeEconomics.Data.Entities.People;
 using HomeEconomics.Types;
 
-namespace HomeEconomics.Web.Areas.People.Controllers
+namespace HomeEconomics.Web.Controllers
 {
     public abstract class EntityController<RepositoryType, EntityType> : Controller
         where EntityType : IEntity

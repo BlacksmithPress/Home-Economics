@@ -1,10 +1,9 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - Home Economics</title>
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Home Economics</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -21,18 +20,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("People", "Index", "People", new { area = "People" }, null)</li>
-                    <li>@Html.ActionLink("Rewards", "Index", "Activities", new { area = "Rewards" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "HelpPage" }, null)</li>
+                    <li>@Html.ActionLink("Activities", "Index", "Activities", new { area = "Rewards" }, null)</li>
+                    <li>@Html.ActionLink("Assignments", "Index", "Assignments", new {area = "Rewards"}, null)</li>
+                    <li>@Html.ActionLink("Evaluations", "Index", "Evaluations", new {area = "Rewards"}, null)</li>
+                    <li>@Html.ActionLink("Rewards", "Index", "Rewards", new { area = "Rewards" }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
+
     <div class="container body-content">
         @RenderBody()
-        @RenderSection("SPAViews", required: false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Blacksmith Press</p>
@@ -41,6 +40,6 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("Scripts", required: false)
+    @RenderSection("scripts", required: false)
 </body>
 </html>

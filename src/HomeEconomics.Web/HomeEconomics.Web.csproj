@@ -234,7 +234,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Areas\People\Controllers\EntityController.cs" />
+    <Compile Include="Areas\Rewards\Controllers\RewardsController.cs" />
+    <Compile Include="Areas\Rewards\Controllers\EvaluationsController.cs" />
+    <Compile Include="Areas\Rewards\Controllers\AssignmentsController.cs" />
+    <Compile Include="Areas\Rewards\Controllers\ActivitiesController.cs" />
+    <Compile Include="Areas\Rewards\RewardsAreaRegistration.cs" />
+    <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Areas\People\Controllers\FamiliesController.cs" />
     <Compile Include="Areas\People\Controllers\PeopleController.cs" />
     <Compile Include="Areas\People\PeopleAreaRegistration.cs" />
@@ -297,6 +302,28 @@
     <Content Include="Areas\People\Views\Families\Details.cshtml" />
     <Content Include="Areas\People\Views\Families\Edit.cshtml" />
     <Content Include="Areas\People\Views\Families\Index.cshtml" />
+    <Content Include="Areas\Rewards\Views\web.config" />
+    <Content Include="Areas\Rewards\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Rewards\Views\Activities\Create.cshtml" />
+    <Content Include="Areas\Rewards\Views\Activities\Delete.cshtml" />
+    <Content Include="Areas\Rewards\Views\Activities\Details.cshtml" />
+    <Content Include="Areas\Rewards\Views\Activities\Edit.cshtml" />
+    <Content Include="Areas\Rewards\Views\Activities\Index.cshtml" />
+    <Content Include="Areas\Rewards\Views\Rewards\Create.cshtml" />
+    <Content Include="Areas\Rewards\Views\Rewards\Delete.cshtml" />
+    <Content Include="Areas\Rewards\Views\Rewards\Details.cshtml" />
+    <Content Include="Areas\Rewards\Views\Rewards\Edit.cshtml" />
+    <Content Include="Areas\Rewards\Views\Rewards\Index.cshtml" />
+    <Content Include="Areas\Rewards\Views\Evaluations\Create.cshtml" />
+    <Content Include="Areas\Rewards\Views\Evaluations\Delete.cshtml" />
+    <Content Include="Areas\Rewards\Views\Evaluations\Details.cshtml" />
+    <Content Include="Areas\Rewards\Views\Evaluations\Edit.cshtml" />
+    <Content Include="Areas\Rewards\Views\Evaluations\Index.cshtml" />
+    <Content Include="Areas\Rewards\Views\Assignments\Create.cshtml" />
+    <Content Include="Areas\Rewards\Views\Assignments\Delete.cshtml" />
+    <Content Include="Areas\Rewards\Views\Assignments\Details.cshtml" />
+    <Content Include="Areas\Rewards\Views\Assignments\Edit.cshtml" />
+    <Content Include="Areas\Rewards\Views\Assignments\Index.cshtml" />
     <None Include="Properties\PublishProfiles\home-economics - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\home-economics - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -358,6 +385,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\People\Models\" />
+    <Folder Include="Areas\Rewards\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
