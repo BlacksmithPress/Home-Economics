@@ -8,10 +8,9 @@ namespace HomeEconomics.Data.Entities
 {
     public class Person : Entity, IPerson
     {
-        private readonly List<IFamily> _families = new List<IFamily>();
         public string[] Names { get; set; }
         public Sex Sex { get; set; }
         public DateTimeOffset Birthdate { get; set; }
-        public IEnumerable<IFamily> Families => _families;
+        public IList<IFamily> Families { get; set; } = new List<IFamily>();
     }
 }

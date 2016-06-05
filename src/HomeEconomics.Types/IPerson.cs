@@ -13,6 +13,6 @@ namespace HomeEconomics.Types
         string[] Names { get; set; }
         Sex Sex { get; set; }
         DateTimeOffset Birthdate { get; set; }
-        IEnumerable<IFamily> Families { get; }
+        IList<IFamily> Families { get; set; }
     }
 }
