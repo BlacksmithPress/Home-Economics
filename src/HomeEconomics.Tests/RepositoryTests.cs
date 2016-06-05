@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Autofac;
+using HomeEconomics.Data;
 using HomeEconomics.Data.Entities;
 using HomeEconomics.Data.Entities.People;
 using HomeEconomics.Data.Repositories;

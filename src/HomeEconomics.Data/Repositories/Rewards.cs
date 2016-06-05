@@ -23,7 +23,7 @@ namespace HomeEconomics.Data.Repositories
 
         public static void RegisterTypes(IMongoDatabase database, ContainerBuilder builder)
         {
-            var collection = database.GetCollection<IEvaluation>("Rewards");
+            var collection = database.GetCollection<IReward>("Rewards");
             builder.RegisterType<Reward>().As<IReward>();
             builder.RegisterType<Repository<IReward>>().As<IRepository<IReward>>();
             builder.RegisterInstance(collection).As<IMongoCollection<IReward>>();

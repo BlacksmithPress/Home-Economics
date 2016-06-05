@@ -1,18 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using HomeEconomics.Data;
 using HomeEconomics.Data.Entities.People;
-using HomeEconomics.Web.Models;
 
 namespace HomeEconomics.Web.Areas.People.Controllers
 {
     public class PeopleController : Controller
     {
-        private Data.Repositories.People _people = Data.Repositories.Database.Instance.People;
+        private Data.Repositories.People _people = Database.Instance.People;
 
         // GET: People/People
         public ActionResult Index()

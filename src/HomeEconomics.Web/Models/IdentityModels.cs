@@ -1,8 +1,10 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Configuration;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using AspNet.Identity.MongoDB;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
+using MongoDB.Driver;
 
 namespace HomeEconomics.Web.Models
 {
@@ -20,11 +22,25 @@ namespace HomeEconomics.Web.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IDisposable
     {
+        private MongoClient _client;
+        private IMongoDatabase _database;
+
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
         {
+            var url = ConfigurationManager.ConnectionStrings["home-economics"]?.ConnectionString ?? "mongodb://localhost:27017/home-economics";
+            var name = ConfigurationManager.AppSettings["identity:database"] ?? url.Substring(url.LastIndexOf('/') + 1);
+
+            _client = new MongoClient(url);
+            _database = _client.GetDatabase(name);
+            Users = GetCollection<ApplicationUser>("Users");
+        }
+
+        private IMongoCollection<EntityType> GetCollection<EntityType>(string name)
+        {
+            var collection = ConfigurationManager.AppSettings[$"identity:{name.ToLowerInvariant()}"] ?? name;
+            return _database.GetCollection<EntityType>(collection);
         }
 
         public static ApplicationDbContext Create()
@@ -32,6 +48,10 @@ namespace HomeEconomics.Web.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<HomeEconomics.Data.Entities.People.Person> People { get; set; }
+        public IMongoCollection<ApplicationUser> Users { get; set; }
+        public void Dispose()
+        {
+            ;
+        }
     }
 }

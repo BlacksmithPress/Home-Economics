@@ -1,17 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
-using HomeEconomics.Data.Entities;
-using HomeEconomics.Data.Entities.People;
-using HomeEconomics.Types;
-using HomeEconomics.Types.People;
+using HomeEconomics.Data.Repositories;
 using MongoDB.Driver;
 
-namespace HomeEconomics.Data.Repositories
+namespace HomeEconomics.Data
 {
     public class Database
     {
@@ -25,6 +16,11 @@ namespace HomeEconomics.Data.Repositories
             Rewards.RegisterTypes(database, builder);
 
             People = People.CreateRepository(database, "People");
+            Families = Families.CreateRepository(database, "Families");
+            Activities = Activities.CreateRepository(database, "Activities");
+            Assignments = Assignments.CreateRepository(database, "Assignments");
+            Evaluations = Evaluations.CreateRepository(database, "Evaluations");
+            Rewards = Rewards.CreateRepository(database, "Rewards");
         }
 
         public static Database Instance { get; internal set; }
