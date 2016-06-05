@@ -31,5 +31,7 @@ namespace HomeEconomics.Web.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HomeEconomics.Data.Entities.People.Person> People { get; set; }
     }
 }

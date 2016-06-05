@@ -26,7 +26,7 @@ namespace HomeEconomics.Data.Repositories
             return entity;
         }
 
-        public EntityType Retrieve(string id)
+        public EntityType Retrieve(Guid id)
         {
             var filter = Builders<EntityType>.Filter.Eq("Id", id);
             return _collection.Find(filter).FirstOrDefault();
@@ -40,12 +40,12 @@ namespace HomeEconomics.Data.Repositories
         public EntityType Update(EntityType entity)
         {
             if (entity.Id != Guid.Empty)
-                Delete(entity.Id.ToString());
+                Delete(entity.Id);
 
             return Create(entity);
         }
 
-        public void Delete(string id)
+        public void Delete(Guid id)
         {
             var filter = Builders<EntityType>.Filter.Eq("Id", id);
             _collection.DeleteOne(filter);
