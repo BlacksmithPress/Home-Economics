@@ -10,6 +10,6 @@ namespace HomeEconomics.Types
     public interface IFamily : IEntity
     {
         DateTimeOffset Birthdate { get; set; }
-        IEnumerable<IPerson> Members { get; }
+        IList<IPerson> Members { get; set; }
     }
 }
