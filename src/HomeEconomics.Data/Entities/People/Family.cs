@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using HomeEconomics.Types;
-using NodaTime;
+using HomeEconomics.Types.People;
 
-namespace HomeEconomics.Data.Entities
+namespace HomeEconomics.Data.Entities.People
 {
     public class Family : Entity, IFamily
     {

@@ -1,12 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HomeEconomics.Types.Enumerations;
-using NodaTime;
 
-namespace HomeEconomics.Types
+namespace HomeEconomics.Types.People
 {
     public interface IPerson : IEntity
     {

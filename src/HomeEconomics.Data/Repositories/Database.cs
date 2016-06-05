@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using HomeEconomics.Data.Entities;
+using HomeEconomics.Data.Entities.People;
 using HomeEconomics.Types;
+using HomeEconomics.Types.People;
 using MongoDB.Driver;
 
 namespace HomeEconomics.Data.Repositories
@@ -15,15 +17,12 @@ namespace HomeEconomics.Data.Repositories
     {
         internal Database(IMongoDatabase database, ContainerBuilder builder)
         {
-            var people = database.GetCollection<IPerson>("People");
-            builder.RegisterType<Person>().As<IPerson>();
-            builder.RegisterType<Repository<IPerson>>().As<IRepository<IPerson>>();
-            builder.RegisterInstance(people).As<IMongoCollection<IPerson>>();
-
-            var families = database.GetCollection<IFamily>("Families");
-            builder.RegisterType<Family>().As<IFamily>();
-            builder.RegisterType<Repository<IFamily>>().As<IRepository<IFamily>>();
-            builder.RegisterInstance(families).As<IMongoCollection<IFamily>>();
+            People.RegisterTypes(database, builder);
+            Families.RegisterTypes(database, builder);
+            Activities.RegisterTypes(database, builder);
+            Assignments.RegisterTypes(database, builder);
+            Evaluations.RegisterTypes(database, builder);
+            Rewards.RegisterTypes(database, builder);
 
             People = People.CreateRepository(database, "People");
         }
@@ -32,11 +31,19 @@ namespace HomeEconomics.Data.Repositories
 
         public Families Families { get; set; }
         public People People { get; set; }
+        public Assignments Assignments { get; set; }
+        public Activities Activities { get; set; }
+        public Evaluations Evaluations { get; set; }
+        public Rewards Rewards { get; set; }
 
         public void Clear()
         {
             Families?.Clear();
             People?.Clear();
+            Activities?.Clear();
+            Assignments?.Clear();
+            Evaluations?.Clear();
+            Rewards?.Clear();
         }
     }
 

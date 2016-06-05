@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using HomeEconomics.Data.Entities;
+using HomeEconomics.Data.Entities.People;
 using HomeEconomics.Data.Repositories;
 using HomeEconomics.Types;
 using HomeEconomics.Types.Enumerations;
@@ -52,23 +53,6 @@ namespace HomeEconomics.Tests
             // cleanup
 
         }
-
-        [Test]
-        public void Repository_LoadJson_PopulatesCollection()
-        {
-            // arrange isolation
-
-            // arrange test
-
-            // act
-            
-
-            // assert
-
-            // cleanup
-
-        }
-
 
     }
 }

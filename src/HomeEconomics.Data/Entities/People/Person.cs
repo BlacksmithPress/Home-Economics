@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-using HomeEconomics.Types;
 using HomeEconomics.Types.Enumerations;
-using NodaTime;
+using HomeEconomics.Types.People;
 
-namespace HomeEconomics.Data.Entities
+namespace HomeEconomics.Data.Entities.People
 {
     public class Person : Entity, IPerson
     {

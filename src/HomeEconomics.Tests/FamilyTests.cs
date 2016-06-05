@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HomeEconomics.Data.Entities;
-using HomeEconomics.Tests.Resources;
 using NUnit.Framework;
 using Shouldly;
 
@@ -19,8 +18,8 @@ namespace HomeEconomics.Tests
             // arrange isolation
 
             // arrange test
-            var family = Sample.Family.LeFebvre;
-            var person = Sample.Person.Lowell;
+            var family = Samples.People.Family.LeFebvre;
+            var person = Samples.People.Person.Lowell;
 
             // act
             family.Members.Add(person);
@@ -37,7 +36,7 @@ namespace HomeEconomics.Tests
             // arrange isolation
 
             // arrange test
-            var family = Sample.Family.LeFebvre;
+            var family = Samples.People.Family.LeFebvre;
             var person = family.Members.First(m => m.Names[0] == "Ken");
 
             // act
