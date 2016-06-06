@@ -17,13 +17,13 @@ namespace HomeEconomics.Web.Controllers
         private RepositoryType _repository;
 
         // GET: People/People
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View(_repository.Documents);
         }
 
         // GET: People/People/Details/5
-        public ActionResult Details(Guid? id)
+        public virtual ActionResult Details(Guid? id)
         {
             if (id == null)
             {
@@ -39,7 +39,7 @@ namespace HomeEconomics.Web.Controllers
         }
 
         // GET: People/People/Create
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         }
@@ -49,7 +49,7 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EntityType entity)
+        public virtual ActionResult Create(EntityType entity)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +62,7 @@ namespace HomeEconomics.Web.Controllers
         }
 
         // GET: People/People/Edit/5
-        public ActionResult Edit(Guid? id)
+        public virtual ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
@@ -82,7 +82,7 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EntityType entity)
+        public virtual ActionResult Edit(EntityType entity)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,7 @@ namespace HomeEconomics.Web.Controllers
         }
 
         // GET: People/People/Delete/5
-        public ActionResult Delete(Guid? id)
+        public virtual ActionResult Delete(Guid? id)
         {
             if (id == null)
             {
@@ -111,7 +111,7 @@ namespace HomeEconomics.Web.Controllers
         // POST: People/People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id)
+        public virtual ActionResult DeleteConfirmed(Guid id)
         {
             _repository.Delete(id);
             return RedirectToAction("Index");

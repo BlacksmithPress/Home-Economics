@@ -1,14 +1,13 @@
-﻿@model HomeEconomics.Data.Entities.People.Family
+﻿@model HomeEconomics.Data.Entities.Rewards.Reward
 
 @{
     ViewBag.Title = "Details";
-    var members = Model.Members.Count();
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Family</h4>
+    <h4>Reward</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -21,19 +20,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Birthdate)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Birthdate)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Members)
+            @Html.DisplayNameFor(model => model.UnitOfMeasure)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => members)
+            @Html.DisplayFor(model => model.UnitOfMeasure)
         </dd>
     </dl>
 </div>

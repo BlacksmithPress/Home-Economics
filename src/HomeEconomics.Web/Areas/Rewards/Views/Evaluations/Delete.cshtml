@@ -1,4 +1,4 @@
-﻿@model HomeEconomics.Data.Entities.People.Family
+﻿@model HomeEconomics.Data.Entities.Rewards.Evaluation
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Family</h4>
+    <h4>Evaluation</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -21,21 +21,44 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Birthdate)
+            @Html.DisplayNameFor(model => model.Assignment)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Birthdate)
+            @Html.DisplayFor(model => model.Assignment)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Members)
+            @Html.DisplayNameFor(model => model.Comments)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Members.Count())
+            @Html.DisplayFor(model => model.Comments)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Evaluated)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evaluated)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Evaluator)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Evaluator)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reward)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reward)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {

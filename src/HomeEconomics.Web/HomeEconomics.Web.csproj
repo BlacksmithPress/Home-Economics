@@ -238,6 +238,7 @@
     <Compile Include="Areas\Rewards\Controllers\EvaluationsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\AssignmentsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\ActivitiesController.cs" />
+    <Compile Include="Areas\Rewards\Models\AssignmentCreateViewModel.cs" />
     <Compile Include="Areas\Rewards\RewardsAreaRegistration.cs" />
     <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Areas\People\Controllers\FamiliesController.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MeController.cs" />
+    <Compile Include="Extensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -324,6 +326,7 @@
     <Content Include="Areas\Rewards\Views\Assignments\Details.cshtml" />
     <Content Include="Areas\Rewards\Views\Assignments\Edit.cshtml" />
     <Content Include="Areas\Rewards\Views\Assignments\Index.cshtml" />
+    <Content Include="Areas\Rewards\Views\_ViewStart.cshtml" />
     <None Include="Properties\PublishProfiles\home-economics - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\home-economics - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -385,7 +388,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\People\Models\" />
-    <Folder Include="Areas\Rewards\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

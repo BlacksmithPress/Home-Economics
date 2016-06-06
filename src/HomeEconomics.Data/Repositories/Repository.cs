@@ -32,7 +32,7 @@ namespace HomeEconomics.Data.Repositories
             return type.Name.Pluralize();
         }
 
-        public IQueryable<EntityType> Documents { get { return _collection.AsQueryable(); } }
+        public IEnumerable<EntityType> Documents { get { return _collection.AsQueryable().ToList(); } }
 
         public EntityType Create(EntityType entity)
         {

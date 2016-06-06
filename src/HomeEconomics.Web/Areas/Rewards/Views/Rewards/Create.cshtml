@@ -1,4 +1,4 @@
-﻿@model HomeEconomics.Data.Entities.People.Family
+﻿@model HomeEconomics.Data.Entities.Rewards.Reward
 
 @{
     ViewBag.Title = "Create";
@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Family</h4>
+        <h4>Reward</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -25,10 +25,18 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Birthdate, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Quantity, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Birthdate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Birthdate, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Quantity, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UnitOfMeasure, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EnumDropDownListFor(model => model.UnitOfMeasure, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.UnitOfMeasure, "", new { @class = "text-danger" })
             </div>
         </div>
 

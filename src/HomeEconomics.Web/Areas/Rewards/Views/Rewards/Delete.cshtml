@@ -1,4 +1,4 @@
-﻿@model HomeEconomics.Data.Entities.People.Family
+﻿@model HomeEconomics.Data.Entities.Rewards.Reward
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Family</h4>
+    <h4>Reward</h4>
     <hr />
     <dl class="dl-horizontal">
 
@@ -21,19 +21,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Birthdate)
+            @Html.DisplayNameFor(model => model.Quantity)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Birthdate)
+            @Html.DisplayFor(model => model.Quantity)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Members)
+            @Html.DisplayNameFor(model => model.UnitOfMeasure)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Members.Count())
+            @Html.DisplayFor(model => model.UnitOfMeasure)
         </dd>
 
     </dl>

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<HomeEconomics.Data.Entities.People.Family>
+﻿@model IEnumerable<HomeEconomics.Data.Entities.Rewards.Reward>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Rewards</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -15,27 +15,25 @@
             Name
         </th>
         <th>
-            Birthdate
+            Quantity
         </th>
         <th>
-            Members
+            Unit of Measure
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model)
 {
-    var members = item.Members.Count();
-
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Birthdate)
+            @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => members)
+            @Html.DisplayFor(modelItem => item.UnitOfMeasure)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
