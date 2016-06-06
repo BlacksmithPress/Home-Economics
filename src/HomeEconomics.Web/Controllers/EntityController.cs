@@ -2,10 +2,12 @@
 using System.Net;
 using System.Web.Mvc;
 using HomeEconomics.Types;
+using HomeEconomics.Web.Areas.Rewards.Models;
 
 namespace HomeEconomics.Web.Controllers
 {
-    public abstract class EntityController<RepositoryType, EntityType> : Controller
+
+    public abstract class EntityController<RepositoryType, EntityType, CreateModelType, UpdateModelType> : Controller
         where EntityType : IEntity
         where RepositoryType : IRepository<EntityType>
     {
@@ -14,7 +16,7 @@ namespace HomeEconomics.Web.Controllers
             _repository = repository;
         }
 
-        private RepositoryType _repository;
+        protected RepositoryType _repository;
 
         // GET: People/People
         public virtual ActionResult Index()
@@ -49,16 +51,16 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(EntityType entity)
+        public virtual ActionResult Create(ICreateViewModel<EntityType> model)
         {
             if (ModelState.IsValid)
             {
-                entity.Id = Guid.NewGuid();
-                _repository.Create(entity);
+                model.Entity.Id = Guid.NewGuid();
+                _repository.Create(model.Entity);
                 return RedirectToAction("Index");
             }
 
-            return View(entity);
+            return View(model);
         }
 
         // GET: People/People/Edit/5
@@ -82,14 +84,14 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(EntityType entity)
+        public virtual ActionResult Edit(IUpdateViewModel<EntityType> model)
         {
             if (ModelState.IsValid)
             {
-                _repository.Update(entity);
+                _repository.Update(model.Entity);
                 return RedirectToAction("Index");
             }
-            return View(entity);
+            return View(model);
         }
 
         // GET: People/People/Delete/5
@@ -116,5 +118,12 @@ namespace HomeEconomics.Web.Controllers
             _repository.Delete(id);
             return RedirectToAction("Index");
         }
+    }
+
+    public abstract class EntityController<RepositoryType, EntityType> : EntityController<RepositoryType, EntityType, EntityType, EntityType>
+        where EntityType : IEntity
+        where RepositoryType : IRepository<EntityType>
+    {
+        public EntityController(RepositoryType repository) : base(repository) { }
     }
 }

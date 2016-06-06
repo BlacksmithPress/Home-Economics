@@ -56,6 +56,10 @@
       <HintPath>..\packages\Autofac.4.0.0-rc2-240\lib\netstandard1.1\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Autofac.Integration.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Owin.3.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
       <Private>True</Private>
@@ -234,11 +238,16 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\People\PeopleAreaModule.cs" />
     <Compile Include="Areas\Rewards\Controllers\RewardsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\EvaluationsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\AssignmentsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\ActivitiesController.cs" />
     <Compile Include="Areas\Rewards\Models\AssignmentCreateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\Binders\AssignmentCreateViewModelBinder.cs" />
+    <Compile Include="Areas\Rewards\Models\ICreateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\IUpdateViewModel.cs" />
+    <Compile Include="Areas\Rewards\RewardsAreaModule.cs" />
     <Compile Include="Areas\Rewards\RewardsAreaRegistration.cs" />
     <Compile Include="Controllers\EntityController.cs" />
     <Compile Include="Areas\People\Controllers\FamiliesController.cs" />
@@ -327,8 +336,9 @@
     <Content Include="Areas\Rewards\Views\Assignments\Edit.cshtml" />
     <Content Include="Areas\Rewards\Views\Assignments\Index.cshtml" />
     <Content Include="Areas\Rewards\Views\_ViewStart.cshtml" />
-    <None Include="Properties\PublishProfiles\home-economics - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\home-economics - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\home-economics.azure via FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\home-economics.azure via Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\home-economics.local via Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -384,6 +394,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <None Include="Web.Azure.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -410,6 +423,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Azure|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

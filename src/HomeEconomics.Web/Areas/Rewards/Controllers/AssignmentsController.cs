@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using HomeEconomics.Data;
 using HomeEconomics.Data.Entities.People;
@@ -8,7 +9,7 @@ using HomeEconomics.Web.Controllers;
 
 namespace HomeEconomics.Web.Areas.Rewards.Controllers
 {
-    public class AssignmentsController : EntityController<Data.Repositories.Assignments, Assignment>
+    public class AssignmentsController : EntityController<Data.Repositories.Assignments, Assignment, AssignmentCreateViewModel, AssignmentCreateViewModel>
     {
         public AssignmentsController() : base(Database.Instance.Assignments) { }
 
@@ -16,7 +17,7 @@ namespace HomeEconomics.Web.Areas.Rewards.Controllers
         {
             var model = new AssignmentCreateViewModel
             {
-                Assignment = new Assignment(),
+                Entity = new Assignment(),
                 Activities = Database.Instance.Activities.Documents.Select<Activity, SelectListItem>(a => a.ToSelectListItem()),
                 People = Database.Instance.People.Documents.Select<Person, SelectListItem>(a => a.ToSelectListItem()),
                 Rewards = Database.Instance.Rewards.Documents.Select<Reward, SelectListItem>(a => a.ToSelectListItem()),

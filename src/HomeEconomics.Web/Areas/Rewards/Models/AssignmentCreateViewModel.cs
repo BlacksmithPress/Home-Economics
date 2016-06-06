@@ -8,11 +8,11 @@ using HomeEconomics.Data.Entities.Rewards;
 
 namespace HomeEconomics.Web.Areas.Rewards.Models
 {
-    public class AssignmentCreateViewModel
+    public class AssignmentCreateViewModel : ICreateViewModel<Assignment>, IUpdateViewModel<Assignment>
     {
-        public Assignment Assignment { get; set; }
         public IEnumerable<SelectListItem> Activities { get; set; }
         public IEnumerable<SelectListItem> People { get; set; }
         public IEnumerable<SelectListItem> Rewards { get; set; }
+        public Assignment Entity { get; set; }
     }
 }
