@@ -4,7 +4,18 @@ using MongoDB.Driver;
 
 namespace HomeEconomics.Data
 {
-    public class Database
+    public interface IDatabase
+    {
+        Families Families { get; set; }
+        People People { get; set; }
+        Assignments Assignments { get; set; }
+        Activities Activities { get; set; }
+        Evaluations Evaluations { get; set; }
+        Rewards Rewards { get; set; }
+        void Clear();
+    }
+
+    public class Database : IDatabase
     {
         internal Database(IMongoDatabase database, ContainerBuilder builder)
         {

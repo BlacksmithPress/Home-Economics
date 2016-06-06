@@ -3,10 +3,10 @@ using System.Net;
 using System.Web.Mvc;
 using HomeEconomics.Types;
 using HomeEconomics.Web.Areas.Rewards.Models;
+using HomeEconomics.Web.Models;
 
 namespace HomeEconomics.Web.Controllers
 {
-
     public abstract class EntityController<RepositoryType, EntityType, CreateModelType, UpdateModelType> : Controller
         where EntityType : IEntity
         where RepositoryType : IRepository<EntityType>
@@ -51,7 +51,7 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Create(ICreateViewModel<EntityType> model)
+        public virtual ActionResult Create(CreateViewModel<EntityType> model)
         {
             if (ModelState.IsValid)
             {
@@ -84,7 +84,7 @@ namespace HomeEconomics.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit(IUpdateViewModel<EntityType> model)
+        public virtual ActionResult Edit(UpdateViewModel<EntityType> model)
         {
             if (ModelState.IsValid)
             {
@@ -120,7 +120,7 @@ namespace HomeEconomics.Web.Controllers
         }
     }
 
-    public abstract class EntityController<RepositoryType, EntityType> : EntityController<RepositoryType, EntityType, EntityType, EntityType>
+    public abstract class EntityController<RepositoryType, EntityType> : EntityController<RepositoryType, EntityType, CreateViewModel<EntityType>, UpdateViewModel<EntityType>>
         where EntityType : IEntity
         where RepositoryType : IRepository<EntityType>
     {

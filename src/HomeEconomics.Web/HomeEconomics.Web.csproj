@@ -52,12 +52,16 @@
       <HintPath>..\packages\AspNet.Identity.MongoDB.2.0.8\lib\net45\AspNet.Identity.MongoDB.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Autofac, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.0.0-rc2-240\lib\netstandard1.1\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.Owin.3.1.0\lib\net45\Autofac.Integration.Mvc.Owin.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Autofac.Integration.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -238,15 +242,24 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Areas\People\Models\Binders\PersonCreateViewModelBinder.cs" />
+    <Compile Include="Areas\People\Models\PersonCreateViewModel.cs" />
     <Compile Include="Areas\People\PeopleAreaModule.cs" />
     <Compile Include="Areas\Rewards\Controllers\RewardsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\EvaluationsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\AssignmentsController.cs" />
     <Compile Include="Areas\Rewards\Controllers\ActivitiesController.cs" />
+    <Compile Include="Areas\Rewards\Models\RewardCreateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\RewardUpdateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\ActivityUpdateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\ActivityCreateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\EvaluationCreateViewModel.cs" />
     <Compile Include="Areas\Rewards\Models\AssignmentCreateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\EvaluationUpdateViewModel.cs" />
+    <Compile Include="Areas\Rewards\Models\AssignmentUpdateViewModel.cs" />
     <Compile Include="Areas\Rewards\Models\Binders\AssignmentCreateViewModelBinder.cs" />
-    <Compile Include="Areas\Rewards\Models\ICreateViewModel.cs" />
-    <Compile Include="Areas\Rewards\Models\IUpdateViewModel.cs" />
+    <Compile Include="Models\CreateViewModel.cs" />
+    <Compile Include="Models\UpdateViewModel.cs" />
     <Compile Include="Areas\Rewards\RewardsAreaModule.cs" />
     <Compile Include="Areas\Rewards\RewardsAreaRegistration.cs" />
     <Compile Include="Controllers\EntityController.cs" />
@@ -400,7 +413,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\People\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

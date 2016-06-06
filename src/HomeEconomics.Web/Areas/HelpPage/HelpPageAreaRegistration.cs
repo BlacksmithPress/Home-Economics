@@ -1,5 +1,6 @@
 using System.Web.Http;
 using System.Web.Mvc;
+using HomeEconomics.Web.Areas.HelpPage.App_Start;
 
 namespace HomeEconomics.Web.Areas.HelpPage
 {

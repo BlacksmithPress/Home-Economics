@@ -3,6 +3,7 @@ using Autofac.Integration.Mvc;
 using HomeEconomics.Data.Entities.Rewards;
 using HomeEconomics.Web.Areas.Rewards.Models;
 using HomeEconomics.Web.Controllers;
+using HomeEconomics.Web.Models;
 
 namespace HomeEconomics.Web.Areas.Rewards
 {
@@ -10,7 +11,8 @@ namespace HomeEconomics.Web.Areas.Rewards
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<AssignmentCreateViewModel>().As<ICreateViewModel<Assignment>>();
+            builder.RegisterType<AssignmentCreateViewModel>().As<CreateViewModel<Assignment>>();
+            builder.RegisterType<AssignmentUpdateViewModel>().As<UpdateViewModel<Assignment>>();
         }
     }
 }

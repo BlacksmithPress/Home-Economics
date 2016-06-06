@@ -1,4 +1,4 @@
-﻿@model HomeEconomics.Data.Entities.Rewards.Evaluation
+﻿@model HomeEconomics.Web.Areas.Rewards.Models.EvaluationCreateViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -17,46 +17,46 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Entity.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Entity.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entity.Name, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Assignment, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Entity.Assignment, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Assignment, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Assignment, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Entity.Assignment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entity.Assignment, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Entity.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Entity.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entity.Comments, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Evaluated, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Entity.Evaluated, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Evaluated, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Evaluated, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Entity.Evaluated, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entity.Evaluated, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Evaluator, htmlAttributes: new {@class = "control-label col-md-2"})
+            @Html.LabelFor(model => model.Entity.Evaluator, htmlAttributes: new {@class = "control-label col-md-2"})
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Evaluator, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Evaluator, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.Entity.Evaluator, new {htmlAttributes = new {@class = "form-control"}})
+                @Html.ValidationMessageFor(model => model.Entity.Evaluator, "", new {@class = "text-danger"})
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.Reward, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Entity.Reward, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Reward, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Reward, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Entity.Reward, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entity.Reward, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

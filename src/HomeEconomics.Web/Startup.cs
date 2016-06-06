@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Reflection;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
 using HomeEconomics.Web.Areas.Rewards;
@@ -26,7 +27,10 @@ namespace HomeEconomics.Web
             builder.RegisterModule<Data.Module>();
             builder.RegisterModule<RewardsAreaModule>();
             var container = builder.Build();
+
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
             app.UseAutofacMiddleware(container);
+            app.UseAutofacMvc();
 
             ConfigureAuth(app);
         }

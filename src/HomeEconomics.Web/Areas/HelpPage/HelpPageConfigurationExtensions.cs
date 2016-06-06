@@ -13,6 +13,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using HomeEconomics.Web.Areas.HelpPage.ModelDescriptions;
 using HomeEconomics.Web.Areas.HelpPage.Models;
+using HomeEconomics.Web.Areas.HelpPage.SampleGeneration;
 
 namespace HomeEconomics.Web.Areas.HelpPage
 {

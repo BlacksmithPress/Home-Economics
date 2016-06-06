@@ -26,6 +26,7 @@ namespace HomeEconomics.Data
             _database = _client.GetDatabase(name);
 
             Database.Instance = new Database(_database, builder);
+            builder.RegisterInstance(Database.Instance).As<IDatabase>();
         }
     }
 }
