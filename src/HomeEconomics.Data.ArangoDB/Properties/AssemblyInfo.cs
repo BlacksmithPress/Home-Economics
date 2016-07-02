@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HomeEconomics.Data")]
+[assembly: AssemblyTitle("HomeEconomics.Data.ArangoDB")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HomeEconomics.Data")]
+[assembly: AssemblyProduct("HomeEconomics.Data.ArangoDB")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8be9d280-851f-4c92-9344-6bc09518fbd3")]
+[assembly: Guid("a5753f68-3228-4a8c-a83a-d5301520efdc")]
 
 // Version information for an assembly consists of the following four values:
 //

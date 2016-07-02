@@ -5,7 +5,6 @@ using System.Collections.Specialized;
 using System.Linq;
 using HomeEconomics.Types.Enumerations;
 using HomeEconomics.Types.People;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace HomeEconomics.Data.Entities.People
 {

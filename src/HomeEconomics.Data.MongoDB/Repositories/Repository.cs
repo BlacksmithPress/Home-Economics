@@ -1,30 +1,27 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autofac;
 using HomeEconomics.Types;
 using Inflector;
-using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 
-namespace HomeEconomics.Data.Repositories
+namespace HomeEconomics.Data.MongoDB.Repositories
 {
-    public class Repository<InterfaceType, EntityType> : IRepository<EntityType> 
+    public class Repository<InterfaceType, EntityType> : IRepository<InterfaceType> 
         where EntityType : InterfaceType
         where InterfaceType : IEntity
     {
-        private IMongoCollection<EntityType> _collection;
+        private IMongoCollection<InterfaceType> _collection;
 
         public Repository(IMongoDatabase database, ContainerBuilder builder, string name = null)
         {
             if (string.IsNullOrEmpty(name))
-                name = DetermineCollectionName(typeof(EntityType));
+                name = DetermineCollectionName(typeof(InterfaceType));
 
-            _collection = database.GetCollection<EntityType>(name);
+            _collection = database.GetCollection<InterfaceType>(name);
             builder.RegisterType<EntityType>().As<InterfaceType>();
-            builder.RegisterInstance(_collection).As<IMongoCollection<EntityType>>();
+            builder.RegisterInstance(_collection).As<IMongoCollection<InterfaceType>>();
         }
 
         private static string DetermineCollectionName(Type type)
@@ -32,9 +29,9 @@ namespace HomeEconomics.Data.Repositories
             return type.Name.Pluralize();
         }
 
-        public IEnumerable<EntityType> Documents { get { return _collection.AsQueryable().ToList(); } }
+        public IEnumerable<InterfaceType> Documents { get { return (IEnumerable<InterfaceType>) _collection.AsQueryable().ToList(); } }
 
-        public EntityType Create(EntityType entity)
+        public InterfaceType Create(InterfaceType entity)
         {
             if (entity.Id == Guid.Empty)
                 entity.Id = Guid.NewGuid();
@@ -43,13 +40,13 @@ namespace HomeEconomics.Data.Repositories
             return entity;
         }
 
-        public EntityType Retrieve(Guid id)
+        public InterfaceType Retrieve(Guid id)
         {
-            var filter = Builders<EntityType>.Filter.Eq("Id", id);
+            var filter = Builders<InterfaceType>.Filter.Eq("Id", id);
             return _collection.Find(filter).FirstOrDefault();
         }
 
-        public EntityType Update(EntityType entity)
+        public InterfaceType Update(InterfaceType entity)
         {
             if (entity.Id != Guid.Empty)
                 Delete(entity.Id);
@@ -59,7 +56,7 @@ namespace HomeEconomics.Data.Repositories
 
         public void Delete(Guid id)
         {
-            var filter = Builders<EntityType>.Filter.Eq("Id", id);
+            var filter = Builders<InterfaceType>.Filter.Eq("Id", id);
             _collection.DeleteOne(filter);
         }
 

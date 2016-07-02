@@ -5,6 +5,9 @@ using System.Web.Mvc;
 using HomeEconomics.Data;
 using HomeEconomics.Data.Entities.People;
 using HomeEconomics.Data.Entities.Rewards;
+using HomeEconomics.Data.MongoDB;
+using HomeEconomics.Types.People;
+using HomeEconomics.Types.Rewards;
 using HomeEconomics.Web.Areas.Rewards.Models;
 using HomeEconomics.Web.Controllers;
 
@@ -48,9 +51,9 @@ namespace HomeEconomics.Web.Areas.Rewards.Controllers
             var model = new AssignmentCreateViewModel
             {
                 Entity = new Assignment(),
-                Activities = Database.Instance.Activities.Documents.Select<Activity, SelectListItem>(a => a.ToSelectListItem()),
-                People = Database.Instance.People.Documents.Select<Person, SelectListItem>(a => a.ToSelectListItem()),
-                Rewards = Database.Instance.Rewards.Documents.Select<Reward, SelectListItem>(a => a.ToSelectListItem()),
+                Activities = Database.Instance.Activities.Documents.Select<IActivity, SelectListItem>(a => a.ToSelectListItem()),
+                People = Database.Instance.People.Documents.Select<IPerson, SelectListItem>(a => a.ToSelectListItem()),
+                Rewards = Database.Instance.Rewards.Documents.Select<IReward, SelectListItem>(a => a.ToSelectListItem()),
             };
             return View(model);
         }

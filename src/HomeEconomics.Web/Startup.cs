@@ -24,7 +24,7 @@ namespace HomeEconomics.Web
             builder.RegisterModelBinders(Assembly.GetExecutingAssembly());
             builder.RegisterModelBinderProvider();
 
-            builder.RegisterModule<Data.Module>();
+            builder.RegisterModule<Data.MongoDB.Module>();
             builder.RegisterModule<RewardsAreaModule>();
             var container = builder.Build();
 

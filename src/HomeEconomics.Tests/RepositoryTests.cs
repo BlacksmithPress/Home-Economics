@@ -6,15 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Autofac;
 using HomeEconomics.Data;
-using HomeEconomics.Data.Entities;
+using HomeEconomics.Data.MongoDB;
 using HomeEconomics.Data.Entities.People;
-using HomeEconomics.Data.Repositories;
 using HomeEconomics.Types;
 using HomeEconomics.Types.Enumerations;
 using MongoDB.Driver;
 using NodaTime;
 using NUnit.Framework;
 using Shouldly;
+using Module = HomeEconomics.Data.MongoDB.Module;
 
 namespace HomeEconomics.Tests
 {
@@ -26,7 +26,7 @@ namespace HomeEconomics.Tests
         {
             var mongo = new MongoClient(ConfigurationManager.ConnectionStrings["home-economics"].ConnectionString);
             var builder = new ContainerBuilder();
-            builder.RegisterModule<Data.Module>();
+            builder.RegisterModule<Module>();
             _container = builder.Build();
         }
 

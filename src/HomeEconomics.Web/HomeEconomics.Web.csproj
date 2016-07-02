@@ -423,8 +423,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HomeEconomics.Data\HomeEconomics.Data.csproj">
+    <ProjectReference Include="..\HomeEconomics.Data.MongoDB\HomeEconomics.Data.MongoDB.csproj">
       <Project>{c97eaf5f-88dc-4a5f-9ad7-2e647fda68f1}</Project>
+      <Name>HomeEconomics.Data.MongoDB</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HomeEconomics.Data\HomeEconomics.Data.csproj">
+      <Project>{8be9d280-851f-4c92-9344-6bc09518fbd3}</Project>
       <Name>HomeEconomics.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\HomeEconomics.Types\HomeEconomics.Types.csproj">

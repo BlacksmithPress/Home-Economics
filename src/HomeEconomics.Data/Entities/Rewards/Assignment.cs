@@ -1,8 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using HomeEconomics.Types.People;
 using HomeEconomics.Types.Rewards;
 
