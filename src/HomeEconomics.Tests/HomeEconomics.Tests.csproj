@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArangoDB\ConnectionStringTests.cs" />
+    <Compile Include="ArangoDB\DirectTests.cs" />
     <Compile Include="ArangoDB\RepositoryTests.cs" />
     <Compile Include="MongoDB\FamilyTests.cs" />
     <Compile Include="MongoDB\PersonTests.cs" />
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\yojimbo87\ArangoDB-NET\src\Arango\Arango.Client\Arango.Client.csproj">
+      <Project>{bbb9a46e-c8df-4a19-948d-02e2af83765a}</Project>
+      <Name>Arango.Client</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HomeEconomics.Data.ArangoDB\HomeEconomics.Data.ArangoDB.csproj">
       <Project>{a5753f68-3228-4a8c-a83a-d5301520efdc}</Project>
       <Name>HomeEconomics.Data.ArangoDB</Name>

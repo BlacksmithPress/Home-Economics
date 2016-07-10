@@ -7,14 +7,12 @@ namespace HomeEconomics.Tests.Samples.Rewards
     {
         public static Data.Entities.Rewards.Activity Mowing { get; } = new Data.Entities.Rewards.Activity
         {
-            Id = Guid.NewGuid(),
             Name = "Mowing the lawn",
             UnitOfMeasure = Types.Enumerations.UnitsOfMeasure.Activity.Week
         };
 
         public static Data.Entities.Rewards.Activity MakingIce { get; } = new Data.Entities.Rewards.Activity
         {
-            Id = Guid.NewGuid(),
             Name = "Make ice",
             UnitOfMeasure = Types.Enumerations.UnitsOfMeasure.Activity.Day
         };
@@ -24,7 +22,6 @@ namespace HomeEconomics.Tests.Samples.Rewards
     {
         public static Data.Entities.Rewards.Reward TwentyDollars { get; } = new Data.Entities.Rewards.Reward
         {
-            Id = Guid.NewGuid(),
             Name = "$20.00",
             Quantity = 20M,
             UnitOfMeasure = Types.Enumerations.UnitsOfMeasure.Reward.Dollar,
@@ -32,7 +29,6 @@ namespace HomeEconomics.Tests.Samples.Rewards
 
         public static Data.Entities.Rewards.Reward TwentyFiveCents { get; } = new Data.Entities.Rewards.Reward
         {
-            Id = Guid.NewGuid(),
             Name = "25¢",
             Quantity = 0.25M,
             UnitOfMeasure = Types.Enumerations.UnitsOfMeasure.Reward.Dollar,
@@ -43,7 +39,6 @@ namespace HomeEconomics.Tests.Samples.Rewards
     {
         public static Data.Entities.Rewards.Assignment EthanMowing { get; } = new Data.Entities.Rewards.Assignment
         {
-            Id = Guid.NewGuid(),
             Name = "Ethan mowing the lawn",
             Person = Samples.People.Person.Ethan,
             Activity = Samples.Rewards.Activity.Mowing,
@@ -53,7 +48,6 @@ namespace HomeEconomics.Tests.Samples.Rewards
 
         public static Data.Entities.Rewards.Assignment JoshuaMakingIce { get; } = new Data.Entities.Rewards.Assignment
         {
-            Id = Guid.NewGuid(),
             Name = "Joshua making ice",
             Person = Samples.People.Person.Joshua,
             Activity = Samples.Rewards.Activity.MakingIce,

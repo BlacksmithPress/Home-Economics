@@ -33,14 +33,11 @@ namespace HomeEconomics.Data.MongoDB.Repositories
 
         public InterfaceType Create(InterfaceType entity)
         {
-            if (entity.Id == Guid.Empty)
-                entity.Id = Guid.NewGuid();
-
             _collection.InsertOne(entity);
             return entity;
         }
 
-        public InterfaceType Retrieve(Guid id)
+        public InterfaceType Retrieve(string id)
         {
             var filter = Builders<InterfaceType>.Filter.Eq("Id", id);
             return _collection.Find(filter).FirstOrDefault();
@@ -48,13 +45,12 @@ namespace HomeEconomics.Data.MongoDB.Repositories
 
         public InterfaceType Update(InterfaceType entity)
         {
-            if (entity.Id != Guid.Empty)
-                Delete(entity.Id);
+            Delete(entity.Id);
 
             return Create(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(string id)
         {
             var filter = Builders<InterfaceType>.Filter.Eq("Id", id);
             _collection.DeleteOne(filter);

@@ -23,14 +23,14 @@ namespace HomeEconomics.Web.Areas.Families.Controllers
         }
 
         // GET: Families/Families/Details/5
-        public virtual ActionResult Details(Guid? id)
+        public virtual ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var Family = _database.Families.Retrieve(id.Value);
+            var Family = _database.Families.Retrieve(id);
             if (Family == null)
             {
                 return HttpNotFound();

@@ -10,9 +10,9 @@ namespace HomeEconomics.Types
     {
         IEnumerable<EntityType> Documents { get; }
         EntityType Create(EntityType entity);
-        EntityType Retrieve(Guid id);
+        EntityType Retrieve(string id);
         EntityType Update(EntityType entity);
-        void Delete(Guid id);
+        void Delete(string id);
         void Clear();
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Net;
 using Arango.Client;
 using Autofac;
@@ -11,6 +12,7 @@ namespace HomeEconomics.Data.ArangoDB
     {
         private ADatabase _database;
         private Dictionary<string,ConnectionString> _connections = new Dictionary<string, ConnectionString>();
+        private ADatabase _system;
 
         protected override void Load(ContainerBuilder builder)
         {
@@ -29,21 +31,35 @@ namespace HomeEconomics.Data.ArangoDB
                 }
             }
 
+            var system = _connections["system"];
+            if (!ASettings.HasConnection(system.Alias))
+                throw new InvalidDataException($"The _system database cannot be accessed.");
+
+            _system = new ADatabase(system.Alias);
+
             var homeec = _connections["home-economics"];
             if (ASettings.HasConnection(homeec.Alias))
             {
-                _database = new ADatabase(homeec.Alias);
-                var result = _database.Create(homeec.DatabaseName);
-                if (result.Success)
-                    _database = new ADatabase(homeec.Alias);
-
-                if (_database.GetCurrent().Success)
+                var databases = _system.GetAccessibleDatabases();
+                if (databases.Success && databases.HasValue && databases.Value.Contains(homeec.DatabaseName))
                 {
-                    Database.Instance = new Database(_database, builder);
-                    builder.RegisterInstance(Database.Instance).As<IDatabase>();
-                } else
-                    throw new Exception($"No database named {homeec.DatabaseName} was found or could be created.");
+                    _database = new ADatabase(homeec.Alias);
+                }
+                else
+                {
+                    var result = _system.Create(homeec.DatabaseName);
+                    if (result.Success)
+                        _database = new ADatabase(homeec.Alias);
+                }
             }
+            if (_database != null && _database.GetCurrent().Success)
+            {
+                Database.Instance = new Database(_database, builder);
+                builder.RegisterInstance(Database.Instance).As<IDatabase>();
+            }
+            else
+                throw new Exception($"No database named {homeec.DatabaseName} was found or could be created.");
+
         }
     }
 }

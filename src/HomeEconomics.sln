@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeEconomics.Data.MongoDB"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeEconomics.Data", "HomeEconomics.Data\HomeEconomics.Data.csproj", "{8BE9D280-851F-4C92-9344-6BC09518FBD3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arango.Client", "..\..\..\..\yojimbo87\ArangoDB-NET\src\Arango\Arango.Client\Arango.Client.csproj", "{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Azure|Any CPU = Azure|Any CPU
@@ -58,6 +60,12 @@ Global
 		{8BE9D280-851F-4C92-9344-6BC09518FBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BE9D280-851F-4C92-9344-6BC09518FBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BE9D280-851F-4C92-9344-6BC09518FBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Azure|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Azure|Any CPU.Build.0 = Release|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB9A46E-C8DF-4A19-948D-02E2AF83765A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

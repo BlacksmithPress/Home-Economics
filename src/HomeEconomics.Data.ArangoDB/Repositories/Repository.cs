@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Arango.Client;
+using Arango.fastJSON;
 using Autofac;
 using HomeEconomics.Types;
 using Inflector;
@@ -14,33 +16,47 @@ namespace HomeEconomics.Data.ArangoDB.Repositories
         where InterfaceType : IEntity
     {
         private ADatabase _database;
-        private Dictionary<string, InterfaceType> _collection = new Dictionary<string, InterfaceType>();
+        private string _collection;
 
         public Repository(ADatabase database, ContainerBuilder builder, string name = null)
         {
             if (string.IsNullOrEmpty(name))
-                name = DetermineCollectionName(typeof(InterfaceType));
+                _collection = DetermineCollectionName(typeof(InterfaceType));
 
             _database = database;
-            var result = _database.Collection.Get(name);
-            if (result.Success)
+
+            if (HasCollection(_database, _collection))
             {
-                _collection.Clear();
-                foreach (var key in result.Value.Keys)
-                {
-                    try
-                    {
-                        var value = (InterfaceType) result.Value[key];
-                        _collection.Add(key, value);
-                    }
-                    catch
-                    {
-                        ;
-                    }
-                }
+                var result = _database.Collection.Load(_collection);
+                if (!result.Success)
+                    throw new InvalidDataException($"Unable to load the {_collection} collection into memory.");
+            }
+            else
+            {
+                var result = _database.Collection.Create(_collection);
+                if (!result.Success)
+                    throw new InvalidDataException($"Unable to create the {_collection} collection.");
             }
 
             builder.RegisterType<EntityType>().As<InterfaceType>();
+        }
+
+        private bool HasCollection(ADatabase database, string name)
+        {
+            var result = database
+                .ExcludeSystem(true)
+                .GetAllCollections();
+
+            if (result.Success && result.HasValue)
+            {
+                foreach (var collection in result.Value)
+                {
+                    var thisName = collection.String("name");
+                    if (string.Compare(thisName, name, StringComparison.CurrentCultureIgnoreCase) == 0)
+                        return true;
+                }
+            }
+            return false;
         }
 
         private static string DetermineCollectionName(Type type)
@@ -59,35 +75,45 @@ namespace HomeEconomics.Data.ArangoDB.Repositories
 
         public InterfaceType Create(InterfaceType entity)
         {
-            if (entity.Id == Guid.Empty)
-                entity.Id = Guid.NewGuid();
+            var json = JSON.ToJSON(entity);
 
-            _collection.Add(entity.Id.ToString(), entity);
+            var result = _database.Document
+                .WaitForSync(true)
+                .Create(_collection, json);
+
+            if (!result.Success)
+                throw new InvalidDataException($"Exception occurred while attempting to create entity \"{entity.Id}: {entity.Name}\" in {_collection} collection.");
+
+            entity.Id = result.Value.String("_id");    
             return entity;
         }
 
-        public InterfaceType Retrieve(Guid id)
+        public InterfaceType Retrieve(string id)
         {
-            return _collection[id.ToString()];
+            var result = _database.Document.Get<EntityType>(id);
+            if (result.Success && result.HasValue)
+            {
+                return result.Value;
+            }
+            else
+                return default(InterfaceType);
         }
 
         public InterfaceType Update(InterfaceType entity)
         {
-            if (entity.Id != Guid.Empty)
-                Delete(entity.Id);
+            Delete(entity.Id);
 
             return Create(entity);
         }
 
-        public void Delete(Guid id)
+        public void Delete(string id)
         {
-            if (_collection.ContainsKey(id.ToString()))
-                _collection.Remove(id.ToString());
+            var result = _database.Document.Delete(id);
         }
 
         public void Clear()
         {
-            _collection.Clear();
+            var result = _database.Collection.Truncate(_collection);
         }
     }
 }
